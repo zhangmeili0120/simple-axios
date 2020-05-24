@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>axios实现</title>
+  <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+  <!-- <script type="text/javascript" src="./myaxios.js"></script> -->
+  <script type="text/javascript" src="./myaxios2.js"></script>
+</head>
+<body>
+  <h1>实现axios</h1>
+  <button class="btn">点我发送请求</button>
+  <script>
+
+    document.querySelector('.btn').onclick = function() {
+
+      // 拦截器
+      axios.interceptors.request.use(function (config) {
+        // Do something before request is sent
+        console.log('拦截😊1');
+        
+        return config;
+      }, function (error) {
+        // Do something with request error
+        return Promise.reject(error);
+      });
+
+      axios.interceptors.request.use(function (config) {
+        // Do something before request is sent
+        console.log('拦截2🏀');
+        
+        return config;
+      }, function (error) {
+        // Do something with request error
+        return Promise.reject(error);
+      });
+      
+      axios.interceptors.response.use(function (response) {
+        console.log('响应拦截1🌹',response);
+        
+        // Any status code that lie within the range of 2xx cause this function to trigger
+        // Do something with response data
+        return response;
+      }, function (error) {
+        // Any status codes that falls outside the range of 2xx cause this function to trigger
+        // Do something with response error
+        return Promise.reject(error);
+      });
+
+      axios.get('/getAxios?name=xiaoxiao').then(res => {
+        console.log('getAxios 成功响应', res);
+      }, err => {})
+
+
+
+      
+
+      // axios.post('/postAxios', {
+      //   name: '小美post'
+      // }).then(res => {
+      //   console.log('postAxios 成功响应', res);
+      // })
+
+      // axios({
+      //   method: 'get',
+      //   url: '/getAxios'
+      // }).then(res => {
+      //   console.log('getAxios 成功响应', res);
+      // })
+    }
+  </script>
+</body>
+</html>
