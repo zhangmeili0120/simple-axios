@@ -1,7 +1,7 @@
 ### 需求：自己实现一个简单版本axios，包括axios方法和别名方法，包括拦截器。
 
 ### 运行步骤
-- 按照依赖 npm install
+- 安装依赖 npm install
 
 - 本项目后端基于node.js实现，全局安装nodemon: npm install nodemon -g
 
